@@ -47,10 +47,10 @@ Cell::Cell(int x, int y){
 	m_y=y;
 }
 
-ostream& operator<<(ostream& stream, const Cell& c)
+ofstream& operator<<(ofstream& stream, const Cell& c)
 {
-stream << "ok pute" << endl;
-//stream << "("<< c.m_x << "," << c.m_y << ")" << endl ;
 
+//stream << "on écrit" << endl;
+stream << "("<< c.m_x << "," << c.m_y << ")" << endl ;
 return stream;
 }

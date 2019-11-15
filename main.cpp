@@ -142,7 +142,7 @@ void save_cell(Cell *cell,ofstream& f){
 	{
 		if(!cell->m_neighb[i]->deja_vu){
 		save_cell(cell->m_neighb[i],f);
-		f << &cell->m_neighb[i] << endl;
+		f << *cell->m_neighb[i] << endl;
 		
 			}
 	}

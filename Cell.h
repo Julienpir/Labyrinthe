@@ -16,8 +16,8 @@ using namespace std ;
  	void add_neighb(Cell *c1, Cell *c2, int k=0);
 
 
- 	friend ostream& operator<<(ostream& stream, Cell& c);
- 	friend istream& operator>>(istream& stream, Cell& r);
+ 	friend ofstream& operator<<(ofstream& stream, const Cell& c);
+ 	//friend istream& operator>>(istream& stream, Cell& r);
 
 
  	int m_nb_neighb=0;
