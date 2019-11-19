@@ -13,6 +13,7 @@ using namespace std;
 
 
 #include <fstream>
+#include <sstream>
 
 
 struct Maze{
@@ -138,14 +139,25 @@ void draw_path(Path *p){
 void save_cell(Cell *cell,ofstream& f){
 
 	cell->deja_vu = true;
+	f << *cell;
+	int n = cell->m_nb_neighb;
+	f << n;
+	for(int i = 0 ; i < cell->m_nb_neighb ; i++)
+	{
+		f << *cell->m_neighb[i];
+
+	}
+	f << endl;
 	for(int i = 0 ; i < cell->m_nb_neighb ; i++)
 	{
 		if(!cell->m_neighb[i]->deja_vu){
 		save_cell(cell->m_neighb[i],f);
-		f << *cell->m_neighb[i] << endl;
 		
 			}
+
+		
 	}
+
 }
 
 
@@ -181,29 +193,38 @@ f.close(); // fermeture du fichier
 }
 
 
-/*
+
 Maze read_maze(const string& file_name){
 
-string filename = "file.txt";
+string filename = "laby4x4.txt";
+int i = 0;
+int j = 0;
+Maze graph;
+//graph.c_init = Content[0][0];
+//graph.c_end  = Content[0][1];
 ifstream f(filename); // tentative d’ouverture (constructeur)
 if(!f.is_open())
-cout << "Erreur d’ouverture de " << filename << endl;
+	cout << "Erreur d’ouverture de " << filename << endl;
 else{
+	string ligne; //Une variable pour stocker les lignes lues
+	while(getline(f, ligne)){
+		if (i == 1){
+			
+       		//graph.c_init = new Cell(x,y);
+    		i = 0;
 
-
-string ligne; //Une variable pour stocker les lignes lues
-
-while(getline(fichier, ligne)) //Tant qu'on n'est pas à la fin, on lit
-    {
-    cout << ligne << endl;
+    	}
+    	if (ligne.find("Start") != string::npos)
+    		i = 1;
+    	
 
 
 }
 f.close(); 
 // fermeture du fichier // fermeture du fichier
 
-} 
-} */
+}
+}
 
 
 
@@ -218,8 +239,9 @@ int main(){
 	Maze M;
 	M = create_maze();
 	// on affiche le Maze;
-	display(M);
-	save_maze(M, "Trustttt.txt");
+	//display(M);
+	//save_maze(M, "Trustttt.txt");
+	read_maze("o");
 
 /*
 	string filename = "laby4x4.txt";

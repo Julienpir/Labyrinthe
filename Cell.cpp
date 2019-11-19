@@ -51,6 +51,6 @@ ofstream& operator<<(ofstream& stream, const Cell& c)
 {
 
 //stream << "on écrit" << endl;
-stream << "("<< c.m_x << "," << c.m_y << ")" << endl ;
+stream << "("<< c.m_x << "," << c.m_y << ")" ;
 return stream;
 }
