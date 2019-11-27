@@ -11,7 +11,7 @@ using namespace std ;
 
 
 
-void Cell::add_neighb(Cell *c,int k){
+void Cell::add_neighb(Cell *c,int k){ // permet de rajouter une cellule au tableau des voisins
 
 	if(k<=1){
 		if (m_nb_neighb==0){
@@ -35,22 +35,22 @@ void Cell::add_neighb(Cell *c,int k){
 
 }
 
-void Cell::add_neighb(Cell *c1,Cell *c2,int k){
+void Cell::add_neighb(Cell *c1,Cell *c2,int k){ // permet de rajouter 2 cellules au tableau des voisins
+
 	this->add_neighb(c1);
 	this->add_neighb(c2);
 
 }
 
 
-Cell::Cell(int x, int y){
-	m_x=x;
-	m_y=y;
+Cell::Cell(int x, int y){ // création d'un objet "cellule"
+	m_x = x;
+	m_y = y;
 }
 
-ofstream& operator<<(ofstream& stream, const Cell& c)
+ofstream& operator<<(ofstream& stream, const Cell& c) // pour l'écriture des celules dans des fichiers
 {
 
-//stream << "on écrit" << endl;
 stream << "("<< c.m_x << "," << c.m_y << ")" ;
 return stream;
 }
